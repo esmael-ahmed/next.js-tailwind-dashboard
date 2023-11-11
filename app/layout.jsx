@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return<>
   <html lang="en">
-      <body className=' bg-[#cbd5e1]'>
+      <body className=' bg-[#EEF0FA]'>
         <StoreProvider>
         <div>
           <div className=' grid grid-cols-12 '> 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
           </div>
           <div className=' col-span-10 '>
             <Header />
-            <div className=' m-4'>
+            <div className=' mx-[19px] my-[28px]'>
             {children}
             </div>
           

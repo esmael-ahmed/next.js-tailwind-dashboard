@@ -3,7 +3,15 @@ import { storeContext } from '@/app/context/store';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import bag from '../../../public/BagDash.svg'
+import Xmark from '../../../public/fi_x.svg'
 import React, { useContext, useState } from 'react'
+import { Poppins, Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'], weight: '400', })
+const inter500 = Inter({ subsets: ['latin'], weight: '500', })
+const poppins = Poppins({ subsets: ['latin'], weight: '500', })
+
 
 export default function CreateNewOrder() {
 
@@ -47,21 +55,17 @@ export default function CreateNewOrder() {
         
       })
   return <>
-  <section className=' w-3/4 bg-white mx-auto p-5 rounded-lg shadow-lg'>
-        <div className=' flex justify-between items-center'>
-        <h3 className=' mb-3'>Create New Order</h3>
-        <Link href={'/orders'}><div><i className="fa-solid fa-xmark"></i></div></Link>
-        
+  <section className=' w-3/4 bg-white mx-auto px-[24px] py-[28px] rounded-[12px] shadow-lg'>
+        <div className=' flex justify-between items-center mb-[28px]'>
+        <h3 className={`text-[#000] text-[20px] ${poppins.className}`}>Create New Order</h3>
+        <Link href={'/orders'}><div className={` p-[4px] rounded-[8px] bg-[#FFCC9129]`}><Image src={Xmark}  alt="Xmark"/></div></Link>
         </div>
         
         <div>
-            
-            <form className=' grid grid-cols-2 gap-4' onSubmit={formikObj.handleSubmit} action="">
-            
+            <form className=' grid grid-cols-2 gap-x-[52px]' onSubmit={formikObj.handleSubmit} action="">
             <div>
-            <h4 className=' text-[#4b5563]'>Order Details</h4>
-
-             <div className=" my-4">
+            <h4 className={`text-[#8B8D97] text-[16px] ${inter500.className}`}>Order Details</h4>
+             <div className=" mb-[24px] mt-[27px]">
               <select onBlur={formikObj.handleBlur} id='customer' onChange={formikObj.handleChange} value={formikObj.values.customer} type="text" className=' p-2 rounded-lg outline-none bg-[#e5e7eb] w-full '>
               <option disabled value="" label="Select Customer">
                     Select Customer{" "}
@@ -72,7 +76,7 @@ export default function CreateNewOrder() {
               </select>
             </div>
             
-            <div className=" my-4 grid grid-cols-2 gap-4">
+            <div className=" mb-[24px] grid grid-cols-2 gap-x-[12px]">
               <div>
               <select onBlur={formikObj.handleBlur} id='paymentType' onChange={formikObj.handleChange} value={formikObj.values.paymentType} type="text" className=' p-2 rounded-lg outline-none bg-[#e5e7eb] w-full '>
               <option disabled value="" label="Payment Type">
@@ -93,8 +97,8 @@ export default function CreateNewOrder() {
               </div>
             </div>
 
-              <p className=' text-[#4b5563]'>Order Time &amp; Date</p>
-            <div className=" mb-4 grid grid-cols-2 gap-4">
+              <p className={`text-[#53545C] text-[12px] mb-[8px] ${inter.className}`}>Order Time &amp; Date</p>
+            <div className=" mb-[24px] grid grid-cols-2 gap-x-[8px]">
               <div>
               <input onBlur={formikObj.handleBlur} id='orderDate' onChange={formikObj.handleChange} value={formikObj.values.orderDate}  type="date" className=' p-2 rounded-lg outline-none bg-[#e5e7eb] w-full ' />
               </div>
@@ -121,7 +125,7 @@ export default function CreateNewOrder() {
             </div>
             </div>
             <div>
-            <h4 className=' text-[#4b5563]'>Items</h4>
+            <h4 className={`text-[#8B8D97] text-[16px] ${inter500.className}`}>Items</h4>
             <div className=" my-4">
             <select multiple onBlur={formikObj.handleBlur} id='productName' onChange={formikObj.handleChange} value={formikObj.values.productName} type="text" className=' p-2 rounded-lg outline-none bg-[#e5e7eb] w-full '>
               <option disabled value="" label="Select Product">
@@ -137,7 +141,7 @@ export default function CreateNewOrder() {
    
     <div className=' my-4 flex justify-center gap-x-8 items-start col-span-2'>
         <div className=' '>
-            <div onClick={returnToOrders} className=' text-blue-500 bg-white cursor-pointer rounded-lg px-10 py-2 border border-blue-500 hover:bg-blue-500 hover:text-white'>Cancel</div>
+            <div onClick={returnToOrders} className=' text-blue-500 bg-white cursor-pointer rounded-[12px] px-10 py-2 border border-blue-500 hover:bg-blue-500 hover:text-white'>Cancel</div>
         </div>
         <div>
             <button type='submit' className=' text-white bg-blue-500 rounded-lg px-12 py-2 hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500'>Add</button>

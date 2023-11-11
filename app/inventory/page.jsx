@@ -1,8 +1,14 @@
 'use client'
 import React, { useContext, useEffect } from 'react'
-
+import Image from 'next/image'
 import  Link  from 'next/link';
 import { storeContext } from '../context/store';
+import plus from '../../public/fi_plus.svg'
+import folder from '../../public/FolderDash.svg'
+import { Poppins, Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'], weight: '400', })
+const inter500 = Inter({ subsets: ['latin'], weight: '500', })
+const poppins = Poppins({ subsets: ['latin'], weight: '500', })
 
 export default function Inventory() {
 
@@ -15,12 +21,12 @@ export default function Inventory() {
 
   return<>
   <section>
-  <div className=' flex justify-between'>
-    <p className=' text-gray-950 fw-bold text-xl'>Inventory Summary</p>
+  <div className=' flex items-center justify-between'>
+    <p className={`text-[#45464E] text-[16px] ${inter500.className}`}>Inventory Summary</p>
     <Link href={'/inventory/addnewproduct'}>
-    <div className=' text-white bg-blue-500 rounded-lg p-2 hover:bg-blue-700'>
-      <i className="fa-solid fa-plus pr-3"></i>
-      <span>Add a New Product</span>
+    <div className=' flex items-center text-white bg-[#5570F1] rounded-[12px] px-[16px] py-[10px] hover:bg-blue-700'>
+    <Image src={plus}  alt="plus"/>
+      <p className={`text-[14px] ml-[10px] ${inter.className}`}>Add a New Product</p>
     </div>
     </Link>
   </div>
@@ -28,23 +34,19 @@ export default function Inventory() {
 
 
 
-  <div className=' bg-blue-500 p-5 rounded-md mt-4 text-white'>
-      <div className=' flex items-center justify-between mb-8'>
-        <div>
-        <i class="fa-solid fa-folder  pr-4  "></i>
+  <div className=' bg-[#5570F1] px-[15px] py-[11px] rounded-[12px] my-[20px] text-white'>
+      <div>
+        <div className='p-[8px] rounded-[8px] bg-[#FFFFFF29] w-fit'>
+        <Image src={folder}  alt="folder"/>
         </div>
-        {/* <div className=' text-slate-400'>
-          <select id="time" name="time">
-            <option value="volvo">This Week</option>
-          </select>
-        </div> */}
+        
       </div>
 
 
-      <div className=' flex items-center gap-x-60'>
+      <div className=' mt-[32px]'>
         <div >
-          <p className=' mb-1 '>All Products</p>
-          <p className='  fw-bold text-xl'>{allProducts.length}</p>
+          <p className={` text-[14px] mb-[8px] ${inter.className}`}>All Products</p>
+          <p className={` text-[20px] ${poppins.className}`}>{allProducts.length}</p>
         </div>
         
 
@@ -54,23 +56,23 @@ export default function Inventory() {
 
 
 
-    <div className=' bg-white p-5 rounded-md mt-4'>
-    <table className=' w-full text-left border-spacing-y-3  border-separate' >
+    <div className=' bg-white py-[22px] px-[21px] rounded-[12px]'>
+    <p className={`text-[16px] text-[#45464E] text-center mb-[20px] ${inter500.className}`}>Inventory Items</p>
+    <table className=' w-full text-left border-spacing-y-3  ' >
 <thead className=' border-y-2'>
   <tr>
-    <th className=' text-gray-700 fw-light'>Product Name <i className="fa-solid fa-filter pl-2"></i></th>
-    <th className=' text-gray-700 fw-light' >Category<i className="fa-solid fa-filter pl-2"></i></th>
-    <th className=' text-gray-700 fw-light'>Unit Price<i className="fa-solid fa-filter pl-2"></i></th>
-    <th className=' text-gray-700 fw-light'>In-Stock<i className="fa-solid fa-filter pl-2"></i></th>
-    
+    <th className={` text-[#2C2D33] text-[14px]  ${inter.className}`}>Product Name</th>
+    <th className={` text-[#2C2D33] text-[14px]  ${inter.className}`}>Category</th>
+    <th className={` text-[#2C2D33] text-[14px]  ${inter.className}`}>Unit Price</th>
+    <th className={` text-[#2C2D33] text-[14px]  ${inter.className}`}>In-Stock</th>
   </tr>
 </thead>
 <tbody>
-  {allProducts.map(function(product, idx) {return <tr key={idx}> 
-    <td className='text-slate-500'>{product.name}</td>
-    <td className='text-slate-500'>{product.category}</td>
-    <td className='text-slate-500'>{product.price} EGP</td>
-    <td className='text-slate-500'>{product.quantity}</td>
+  {allProducts.map(function(product, idx) {return <tr className={`text-[#6E7079] text-[14px] ${inter.className}`} key={idx}> 
+    <td className='text-slate-500 py-[10px]'>{product.name}</td>
+    <td className='text-slate-500 py-[10px]'>{product.category}</td>
+    <td className='text-slate-500 py-[10px]'>{product.price} EGP</td>
+    <td className='text-slate-500 py-[10px]'>{product.quantity}</td>
   </tr>})}
   
 </tbody>

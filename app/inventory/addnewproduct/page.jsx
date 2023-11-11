@@ -5,6 +5,12 @@ import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 import React, { useContext } from 'react'
+import Image from 'next/image'
+import Xmark from '../../../public/fi_x.svg'
+import { Poppins, Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'], weight: '400', })
+const inter500 = Inter({ subsets: ['latin'], weight: '500', })
+const poppins = Poppins({ subsets: ['latin'], weight: '500', })
 
 export default function AddNewProduct() {
   const router = useRouter()
@@ -42,10 +48,10 @@ export default function AddNewProduct() {
         
       })
 return <>
-    <section className=' w-1/2 bg-white mx-auto p-5 rounded-lg shadow-lg'>
-        <div className=' flex justify-between items-center'>
-        <h3 className=' mb-3'>Add a New Product</h3>
-        <Link href={'/inventory'}><div><i className="fa-solid fa-xmark"></i></div></Link>
+    <section className=' w-1/2 bg-white mx-auto py-[28px] px-[24px] rounded-[12px] shadow-lg'>
+        <div className=' flex justify-between items-center mb-[28px]'>
+        <h3 className={`text-[#000] text-[20px] ${poppins.className}`}>Add a New Product</h3>
+        <Link href={'/inventory'}><div className={` p-[4px] rounded-[8px] bg-[#FFCC9129]`}><Image src={Xmark}  alt="Xmark"/></div></Link>
         
         </div>
         <div>
